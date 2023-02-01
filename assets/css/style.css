@@ -1,0 +1,18 @@
+
+body {
+	background-color: #FDFD96;
+	font-family: Playfair Display;
+}
+
+#header {
+	height: 200px;
+	background: #3A3B36;
+}
+
+.taille {
+	position: relative;
+	color: #FDFD96;
+	font-size: 20px;
+	text-align: center;
+	top: -40%;
+}

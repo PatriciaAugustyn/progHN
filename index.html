@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Le titre de la page.</title>
+		<!-- 1. L’encodage en UTF-8 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset= "UTF-8">
+        <title>Page de présentation</title>
+		<link rel="stylesheet" href="assets/css/style.css">
+		<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Playfair+Display&display=swap" rel="stylesheet">
     </head>
 
     <body>
-        <h1>Titre de niveau 1</h1>
-        <p>Un paragraphe.</p>
-        <p>Un autre paragraphe.</p>
+		<div id="header">
+
+			<!-- 8. Un lien hypertexte vers le site de Sorbonne Nouvelle -->
+			<a href="http://www.univ-paris3.fr/" target="_blank">
+				<!-- 4. Le logo de Sorbonne Nouvelle-->
+				<img src="assets/img/logo_sorbonne-nouvelle.jpg" width="10%" height="30%"/>
+			</a>
+			
+			<div class="taille">
+				<!--2. Un titre de niveau 1 avec votre nom-->
+				<h1>Augustyn Patricia</h1>
+				
+				<!-- 3. Un titre de niveau 2 avec votre niveau d’étude-->
+				<h2>Licence 3 Sciences du Langage et mineure Humanités numériques</h2>
+		
+				<!-- 5. Une photo de vous -->
+				<img src="assets/img/moi.png" width="20%"/>
+			</div>
+		</div>
+		
+		</br></br></br></br></br>
+		<!-- 6. Un tableau avec votre CV des 3 dernières années -->
+		<p>Mon CV des 3 dernières années :</p>
+		<table>
+			<thead>
+				<tr><th>Année</th><th>Formation</th></tr>
+			</thead>
+			<tbody>
+				<tr><th>2022-2023</th><th>Licence 3 Sciences du Langage et mineure Humanités numériques</th></tr>
+				<tr><th>2021-2022</th><th>Licence 2 Sciences du Langage et mineure Humanités numériques</th></tr>
+				<tr><th>2020-2021</th><th>Licence 1 Sciences du Langage et mineure Humanités numériques</th></tr>
+			</tbody>
+		</table>
+		
+		<!-- 7. Une liste numérotée de vos 5 dernières lectures -->
+		<p>Mes cinq dernières lectures :</p>
+		<ol>
+			<li>HEINRICH Christophe <u><i>Claude Monet</i></u></li>
+			<li>DESCARTES René <u><i>Les Passions de l'âme</i></u></li>
+			<li>BRONTË Charlotte <u><i>Jane Eyre</i></u></li>
+			<li>AUSTEN Jane <u><i>Orgueil et Préjugés</i></u></li>
+			<li>SÜSKIND Patrick <u><i>Le Parfum</i></u></li>
+		</ol>
+			
     </body>
 </html>
+
