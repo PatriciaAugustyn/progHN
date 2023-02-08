@@ -1,0 +1,27 @@
+body {
+	margin: 30px;
+	font-size: 20px;
+	font-family: Playfair Display;
+}
+#logo {
+	width: 200px;
+}
+
+.titre {
+	margin : auto;
+	text-align: center;
+	width: 70%;
+}
+
+h1 {
+	color: #A1045A;
+	font-size: 45px;
+}
+
+.titre p {
+	font-size: 30px;
+}
+
+.cours {
+	text-indent: 50px;
+}
