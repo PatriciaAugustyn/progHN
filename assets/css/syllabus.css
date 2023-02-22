@@ -1,10 +1,20 @@
 body {
-	margin: 30px;
-	font-size: 20px;
-	font-family: Playfair Display;
+	font-family : Playfair Display;
+	background: #555B61; 
+}
+
+#page {
+	margin : auto;
+	text-align: center;
+	width: 75%;
+	border: 3px solid white;
+	background: white;
+	font-size: 18px;
 }
 #logo {
 	width: 200px;
+	position: relative;
+	right: 40%;
 }
 
 .titre {
@@ -15,13 +25,15 @@ body {
 
 h1 {
 	color: #A1045A;
-	font-size: 45px;
+	font-size: 35px;
 }
 
 .titre p {
-	font-size: 30px;
+	font-size: 25px;
 }
 
 .cours {
 	text-indent: 50px;
+	text-align: start;
+	padding: 40px;
 }
