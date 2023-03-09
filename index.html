@@ -6,18 +6,25 @@
         <title>Page de présentation</title>
 		<link rel="stylesheet" href="assets/css/style.css">
 		<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=GFS+Didot&family=Indie+Flower&family=Playfair+Display&display=swap" rel="stylesheet">
-    </head>
+		
+		<script src="assets/js/main.js"></script>
+   </head>
 
     <body>
 		<div id="page">
-			
+		
 			<div class="entete">
 				
 				<a href="http://www.univ-paris3.fr/">
 					<img id="im1" src="assets/img/logo-sorbonne.png"/>
 				</a>
 				
-				<h1>Patricia Augustyn</h1>
+				<div class="effet">
+					<div class="ecriture">
+						<h1>Patricia Augustyn</h1>
+					</div>
+				</div>
+				
 				<h2>Licence 3 Sciences du Langage et mineure Humanités numériques</h2>
 				
 				<div class="rond">
@@ -33,50 +40,33 @@
 			
 			</div>
 			
-			</br></br></br></br></br></br></br></br></br></br></br>
+			</br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 			
-			<div id="aboutme">
-				<p><b>A propos de moi</b></p>
-				
-				<p>Mon CV des trois dernières années :</p>
-				
-				<table>
-					<thead>
-						<tr>
-							<th>Année universitaire</th>
-							<th>Formation</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<tr>
-							<td>2022-2023</td>
-							<td>Licence 3 Sciences du Langage et mineure Humanités numériques</td>
-						</tr>
-						
-						<tr>
-							<td>2021-2022</td>
-							<td>Licence 2 Sciences du Langage et mineure Humanités numériques</td>
-						</tr>
-						
-						<tr>
-							<td>2020-2021</td>
-							<td>Licence 1 Sciences du Langage et mineure Humanités numériques</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				
-				<p>Voici les cinq derniers livres que j'ai lu :</p>
-				
-				<ol>
-					<li><u><i>Claude Monet</i></u>, HEINRICH Christophe, édition Tashen</li>
-					<li><u><i>Les Passions de l'âme</i></u>, DESCARTES René, édition Librairie philosophique J. VRIN</li>
-					<li><u><i>Jane Eyre</i></u>, BRONTË Charlotte, édition Pocket</li>
-					<li><u><i>Orgueil et Préjugés</i></u>, AUSTEN Jane, édition Archipoche</li>
-					<li><u><i>Le Parfum</i></u>, SÜSKIND Patrick, édition Livre de Poche</li>
-				</ol>
+		
+			<ul class="menu">
+				<li><a href="cv.html">Mon CV</a></li>
+				<li><a href="lecture.html">Mes lectures</a></li>
+				<li><a href="devoir-string.html">Devoir 1</a></li>
+				<li><a href="devoirarray.html">Devoir 2</a></li>
+			</ul>
+			
+			<button onclick="showOrHide()" class="button">Aide</button>
+			<div id="elementto">
+				<p>Vdddddddddd</p>
 			</div>
+			
+
+			
+			<!-- Bouton de salutation !-->
+			<button onclick="typeWriter()" class="button">Salutation</button>
+			<p id="demo"></p>
+			
+			<!-- Importer document !-->
+			<input type="file" id="txt" name="txt" accept="txt/*">
+			
+			<!-- Bouton de d'essai sur le design jaune !-->
+			<button class="bouton">Essaie</button>
+			
 			
 			<footer>
 				<a href="http://www.univ-paris3.fr/">Lien vers le site de Sorbonne Nouvelle</a>
@@ -85,5 +75,7 @@
 			</footer>
 		
 		</div>	
+		
     </body>
 </html>
+

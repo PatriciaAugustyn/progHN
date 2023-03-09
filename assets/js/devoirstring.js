@@ -57,3 +57,10 @@ function ecriture() {
 
 
 
+//alert(finalseg);
+	//let maj = texte.toUpperCase();
+	//let reg = new RegExp("[ ]+", "gi");
+	//let splitText = maj.split(reg);
+	//document.getElementById('exercice2Resultat').innerHTML = splitText;
+
+
