@@ -97,7 +97,7 @@ body {
 /* Tableau sur mon CV des trois dernières années */
 .aboutme {
 	text-align: start;
-	margin: 15px;
+	margin: 15px; 
 }
 
 .aboutme table {
@@ -230,27 +230,84 @@ body {
 }
 
 
-/*Bouton d'essai jaune */
-.bouton {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  padding: 16px 32px;
-  /*text-align: center;
-  text-decoration: none;  */
-  font-size: 16px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: #FFFF62; 
-  color: black; 
-  border: 2px solid yellow;
-  border-radius: 30px;
-  
+
+
+
+.mylabel {
+	background-color: #ffcc66;
+	padding: 2px;
+	border-right: 1px solid rgb(204, 153, 0);
+	border-bottom: 1px solid rgb(204, 153, 0);
 }
 
-.bouton:hover {
-	background-color: black;
-	color: #FFFF62;
+.infolog {
+	text-align:center;
+	border: #FFFF62;
+	padding: 1pt;
+	margin-left: 0px;
+	margin-right: 0px;
+	background: #FFFF62;
 }
+
+.errorlog {
+	text-align:center;
+	border: 2pt solid rgb(255, 0, 0);
+	padding: 2pt;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: rgb(255, 96, 96);
+}
+
+
+#container {
+	background-color: #ffee9e;
+	border: 3px solid black;
+	padding: 2px;
+	padding-bottom: 5%; 
+	width: 80%;
+	margin-left:10%;
+	height: 100%;
+	min-height: 100%;
+	position: relative;
+}
+
+#page-wrapper {
+	width: 600px;
+	background: #FFFF62;
+	padding: 1em;
+	margin: 1em auto;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+#Global {
+	margin-right: auto; 
+	margin-left: auto; 
+	width: 95%; 
+	border: 3px; 
+	display:table;
+}
+#Global #fileDisplayArea {
+	float:left;
+	width:48%;
+	background: #FFFF62;
+	font-size:0.6em;
+	height:250px;
+	overflow:scroll;
+}
+#Global #page-analysis {
+	margin-left:52%;
+	background: #FFFF62;
+	height : 250px;
+	overflow:scroll;
+}
+
+.font {
+	font-size: 15px;
+	line-height: 28px;
+}
+
+
+
 
 /* Le footer */
 footer {

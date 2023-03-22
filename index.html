@@ -50,23 +50,127 @@
 				<li><a href="devoirarray.html">Devoir 2</a></li>
 			</ul>
 			
-			<button onclick="showOrHide()" class="button">Aide</button>
-			<div id="elementto">
-				<p>Vdddddddddd</p>
-			</div>
 			
 
 			
-			<!-- Bouton de salutation !-->
-			<button onclick="typeWriter()" class="button">Salutation</button>
-			<p id="demo"></p>
 			
-			<!-- Importer document !-->
-			<input type="file" id="txt" name="txt" accept="txt/*">
 			
-			<!-- Bouton de d'essai sur le design jaune !-->
-			<button class="bouton">Essaie</button>
-			
+			<div id="container">
+				<h1 style="text-align:center;">Analyse des <span style="color: #ee9a4d">données</span> dans un fichier</h1>
+
+				<div id="page-wrapper">
+					<div>
+						<span>
+							<label for="fileInput"><small>Sélectionner un fichier au format .txt
+									:</small></label>
+							<input id="fileInput" type="file" accept="text/plain" name="Fichier (.txt)" />
+						</span>
+					</div>
+					<br />
+					<p style="text-align:center;">
+						<small>
+							<label for="delimID" class="mylabel">Délimiteur(s)</label>
+							&nbsp;
+							<input type="text" value=" ,;’'~|&#@=`-.?!%*$()[]{}_:+«»§\/" name="delim" id="delimID" size="40" />
+						</small>
+						<br />
+						<small>
+							<label for="poleID" class="mylabel">Pôle</label>
+							&nbsp;
+							<input type="text" placeholder="entrez un pôle..." name="pole" id="poleID" size="20" />
+						</small>
+						&nbsp;
+						<small>
+							<label for="lgID" class="mylabel">Longueur</label>
+							&nbsp;
+							<input type="text" value="10" name="lg" id="lgID" size="10" />
+						</small>
+						<br />
+						<br />
+						
+						<button class="button" onclick="typeWriter()">Bonjour</button>
+						<p id="demo"></p>
+					
+						<center><button class="button" id="texthide" onclick="showOrHide()"> Afficher Aide</button></center>
+						</br>
+						<div id="show" style="display:none; position:relative">
+							
+							<div class="aboutme">
+								<p>Voici un petit mode d'emploi pour vous guider à travers le site ! </p>
+								
+								<table>
+									<thead>
+										<tr>
+											<th>Les boutons</th>
+											<th>Explication</th>
+										</tr>
+									</thead>
+									
+									<tbody>
+										<tr>
+											<td><button>Browse...</button></td>
+											<td>Pour commencer, <b>cliquez</b> sur ce bouton pour charger votre fichier. <b>Attention</b>, seuls les fichiers au format .txt sont supportés.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Segmentation</button></td>
+											<td>Cliquez sur ce bouton pour <b>segmenter</b> le texte. Vous trouverez le nombre de mots que votr texte contient avec et sans les doublons.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Dictionnaire</button></td>
+											<td>Avec ce bouton, vous obtiendrez un tableau avec les mots les plus <b>fréquents</b> du texte trier dans l'ordre <b>décroissant</b>.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Majuscule</button></td>
+											<td>Cliquez sur ce bouton si vous souhaitez changez le texte en <b>majuscule</b>.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Action 4</button></td>
+											<td>Projet en cours...</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Action 5</button></td>
+											<td>Projet en cours...</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Action 6</button></td>
+											<td>Projet en cours...</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Action 7</button></td>
+											<td>Projet en cours...</td>
+										</tr>
+										
+									</tbody>
+								</table>
+								
+							</div>
+							
+						</div>
+						
+		
+						<button class="button" onclick="segment()"><span>Segmentation</span></button>
+						<button class="button" onclick="seg2()"><span>Dictionnaire</span></button>
+						<button class="button" onclick="maj()"><span>Majuscule</span></button>
+						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 4</span></button>
+						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 5</span></button>
+						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 6</span></button>
+						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 7</span></button>
+					</p>
+				</div>
+				<div id="logger" style="width:100%"></div>
+				<br />
+				<div id="Global">
+					<div id="fileDisplayArea"></div>
+					<div id="page-analysis"></div>
+				</div>
+			</div>
 			
 			<footer>
 				<a href="http://www.univ-paris3.fr/">Lien vers le site de Sorbonne Nouvelle</a>
