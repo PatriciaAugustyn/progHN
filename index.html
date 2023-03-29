@@ -48,6 +48,7 @@
 				<li><a href="lecture.html">Mes lectures</a></li>
 				<li><a href="devoir-string.html">Devoir 1</a></li>
 				<li><a href="devoirarray.html">Devoir 2</a></li>
+				<li><a href="contact.html">Contact</a></li>
 			</ul>
 			
 			
@@ -58,12 +59,13 @@
 			<div id="container">
 				<h1 style="text-align:center;">Analyse des <span style="color: #ee9a4d">données</span> dans un fichier</h1>
 
+
 				<div id="page-wrapper">
 					<div>
 						<span>
 							<label for="fileInput"><small>Sélectionner un fichier au format .txt
 									:</small></label>
-							<input id="fileInput" type="file" accept="text/plain" name="Fichier (.txt)" />
+							<input id="fileInput" type="file" accept="text/plain" name="Fichier (.txt)"/>
 						</span>
 					</div>
 					<br />
@@ -107,19 +109,36 @@
 									</thead>
 									
 									<tbody>
+								
 										<tr>
 											<td><button>Browse...</button></td>
 											<td>Pour commencer, <b>cliquez</b> sur ce bouton pour charger votre fichier. <b>Attention</b>, seuls les fichiers au format .txt sont supportés.</td>
 										</tr>
 										
 										<tr>
+											<td><button class="button">C. Baudelaire</button></td>
+											<td>Si vous n'avez pas de texte, ce bouton vous permet d'en <b>charger un</b> : <i><u>La Mort des amants</u></i> de Charles Baudelaire</td>
+										</tr>
+										
+										<tr>
 											<td><button class="button">Segmentation</button></td>
-											<td>Cliquez sur ce bouton pour <b>segmenter</b> le texte. Vous trouverez le nombre de mots que votr texte contient avec et sans les doublons.</td>
+											<td>Cliquez sur ce bouton pour <b>segmenter</b> le texte. Vous trouverez le nombre de mots que votre texte contient avec et sans les doublons.</td>
 										</tr>
 										
 										<tr>
 											<td><button class="button">Dictionnaire</button></td>
-											<td>Avec ce bouton, vous obtiendrez un tableau avec les mots les plus <b>fréquents</b> du texte trier dans l'ordre <b>décroissant</b>.</td>
+											<td>Avec ce bouton, vous obtiendrez un tableau avec les mots les plus <b>fréquents</b> du texte triés dans l'ordre <b>décroissant</b>.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Concordance</button></td>
+											<td>Cette fonction vous permet de rechercher les <b>contextes gauches</b> et <b>droits</b> d'un <b>mot spécifique</b>. Pour cela, vous devez préciser votre mot dans le <b>pôle</b>, puis entrez la <b>longueur</b> pour décider de la taille des contextes souhaités.</td>
+										</tr>
+										
+										
+										<tr>
+											<td><button class="button">Compteur</button></td>
+											<td>En bas de l'analyseur, vous trouverez une animation et pour activer la réponse il faut cliquer sur le bouton. Il permet de compter les <b>types</b> de phrase dans le texte.</td>
 										</tr>
 										
 										<tr>
@@ -127,50 +146,69 @@
 											<td>Cliquez sur ce bouton si vous souhaitez changez le texte en <b>majuscule</b>.</td>
 										</tr>
 										
+										
 										<tr>
-											<td><button class="button">Action 4</button></td>
+											<td><button class="button">Mot long</button></td>
+											<td>Si vous souhaitez découvrir le mot <b>le plus long</b> de votre texte, ce bouton sera <b>parfait pour répondre à votre demande !</b></td>
+										</tr>
+										
+										
+										<tr>
+											<td><button class="button">Action 8</button></td>
 											<td>Projet en cours...</td>
 										</tr>
 										
 										<tr>
-											<td><button class="button">Action 5</button></td>
-											<td>Projet en cours...</td>
+											<td><button class="button">Nettoyage</button></td>
+											<td>Ce bouton permet de <b>nettoyer</b> la zone de <b>texte</b> et la zone d'<b>analyse</b>.</td>
 										</tr>
-										
-										<tr>
-											<td><button class="button">Action 6</button></td>
-											<td>Projet en cours...</td>
-										</tr>
-										
-										<tr>
-											<td><button class="button">Action 7</button></td>
-											<td>Projet en cours...</td>
-										</tr>
-										
+																				
 									</tbody>
 								</table>
 								
 							</div>
 							
 						</div>
+									
+						<button class="button" onclick="baudelaire()"><span>C. Baudelaire</span></button>
+						<button class="button" onclick="segmentation()"><span>Segmentation</span></button>
+						<button class="button" onclick="dictionnaire()"><span>Dictionnaire</span></button>
 						
-		
-						<button class="button" onclick="segment()"><span>Segmentation</span></button>
-						<button class="button" onclick="seg2()"><span>Dictionnaire</span></button>
+						<!-- Projet en cours....
+						<button class="button" onclick="concordance()"><span>Concordance</span></button>
+						<button class="button" onclick="compteur()"><span>Compteur</span></button>
 						<button class="button" onclick="maj()"><span>Majuscule</span></button>
-						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 4</span></button>
-						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 5</span></button>
-						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 6</span></button>
-						<button class="button" onclick="alert('Je ne fais rien, changez-moi !')"><span>action 7</span></button>
+						<button class="button" onclick="motlong()"><span>Mot long</span></button>
+						<button class="button" onclick=""><span>action 8</span></button>
+						<button class="button" onclick="nettoyage()"><span>Nettoyage</span></button> -->
+					
 					</p>
+					
+					
+					
 				</div>
+				
+			
+				
 				<div id="logger" style="width:100%"></div>
 				<br />
 				<div id="Global">
 					<div id="fileDisplayArea"></div>
 					<div id="page-analysis"></div>
 				</div>
+				
+				<!--- Projet en cours 
+				<div id="compteur">
+					<img id="gif" src="assets/img/mrbean.gif" align="right"  width="37%"/>
+					</br></br>
+					<p>Nombre de phrases déclaratives :</p> <input type="text" name="pole" id="decl"  size="20"/>
+					<p>Nombre de phrases interrogatives :</p> <input type="text" name="pole" id="int"  size="20"/>
+					<p>Nombre de phrases exclamatives :</p> <input type="text" name="pole" id="excl"  size="20"/>
+								
+				</div>	-->
+				
 			</div>
+		
 			
 			<footer>
 				<a href="http://www.univ-paris3.fr/">Lien vers le site de Sorbonne Nouvelle</a>

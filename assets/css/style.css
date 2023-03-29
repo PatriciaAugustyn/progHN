@@ -282,7 +282,7 @@ body {
 #Global {
 	margin-right: auto; 
 	margin-left: auto; 
-	width: 95%; 
+	width: 100%; 
 	border: 3px; 
 	display:table;
 }
@@ -307,6 +307,62 @@ body {
 }
 
 
+/*Page "Contact"*/
+
+	/*Formulaire*/
+input [type=text], select, textarea {
+	width: 100%;
+	padding: 15px;
+	border: 1px solid #ffcc66;
+	border-radius: 5px;
+	box-sizing: border-box;
+	margin-top: 20px;
+	margin-bottom: 30px;
+	resize: vertical;
+}
+input [type=submit] {
+	padding: 20px 10px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.page {
+	border-radius: 20px;
+	background-color: #ffee9e ;
+	padding: 20px;
+}
+option {
+	background: #FFFF62;
+}
+
+
+
+/*Bouton néon pour le submit*/
+	
+.neon {
+	text-align: center;
+	box-sizing: border-box;
+	padding: 10px;
+}
+.neon a{
+	margin-left: 50px;
+	color: black;
+	font-size: 24px;
+	text-decoration: none;
+	text-transform: uppercase;
+	background: #FFFF62;
+	transition: 0.5s;
+	letter-spacing: 4px;
+}
+.neon a:hover {
+	background: #FFFF33;
+	color: black;
+	box-shadow: 0 0 5px #FFFF33,
+				0 0 25px #FFFF33,
+				0 0 50px #FFFF33,
+				0 0 200px black;
+}
 
 
 /* Le footer */

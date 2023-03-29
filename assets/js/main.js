@@ -1,9 +1,9 @@
 
 		
-/*-----Clicker sur le bouton et il affiche le texte avec un effet d'écriture-----*/
+/*----- Clicker sur le bouton et il affiche le texte avec un effet d'écriture -----*/
 		var lettre = 0;
 		var txt = 'Bonjour à tous et bienvenue sur mon site :)'; /* Le texte que l'on veut afficher */
-		var speed = 80; /* La durée de l'effet en .ms */
+		var speed = 100; /* La durée de l'effet en .ms */
 
 		function typeWriter() {
 			if (lettre < txt.length) {
@@ -21,7 +21,7 @@
 				if (div.style.display == "none") {
 					div.style.display = "block";
 
-					/*Remplacer le mot "Afficher" par "Masquer" lorsque l'aide est ouverte*/
+					/*Remplacer le mot "Afficher" par "Masquer" lorsque l'aide est ouverte et inversement*/
 					var txt = hide.replace("Afficher","Masquer");
 					document.getElementById("texthide").innerHTML = txt;
 		}
@@ -34,7 +34,7 @@
 		}
 		
 	
-/*--------Prendre un texte et l'afficher : "download"-------*/	
+/*-------- Prendre un texte et l'afficher : "download"-------*/	
 		window.onload = function() {
     let fileInput = document.getElementById('fileInput');
     let fileDisplayArea = document.getElementById('fileDisplayArea');
@@ -72,8 +72,31 @@
     });
 }
 
+/*------- Action 1 : Afficher un texte ----------*/
+function baudelaire() { 
+          var amant = 'La mort des amants<br><br/>';
+		  amant+="Nous aurons des lits pleins d'odeurs légères,<br/>";//Le "+" permet de concaténer les différentes phrases du texte
+          amant+="Des divans profonds comme des tombeaux,<br/>";
+		  amant+="Et d'étranges fleurs sur des étagères,<br/>";
+		  amant+="Ecloses pour nous sous des cieux plus beaux.<br><br/>";
+		  amant+="Usant à l'envie leurs chaleurs dernières,<br/>";
+		  amant+="Nos deux coeurs seront deux vastes flambeaux,<br/>";
+		  amant+="Qui réfléchiront leurs doubles lumières<br/>";
+          amant+="Dans nos deux esprits, ces miroirs jumeaux.<br><br/>";
+          amant+="Un soir fait de rose et de bleu mystique,<br/>";
+          amant+="Nous échangerons un éclair unique,<br/>";
+          amant+="Comme un long sanglot, tout chargé d'adieux;<br><br/>";
+          amant+="Et plus tard un Ange, entr'ouvrant les portes,<br/>";
+          amant+="Viendra ranimer, fidèle et joyeux,<br/>";
+          amant+="Les miroirs ternis et les flammes mortes.<br><br/>";
+		  amant+="Charles Baudelaire<br/>";
 
-/*------- Action 1 : Segmentater le texte----------*/
+         /*On affiche le texte dans la zone "fileDisplayArea"*/
+		  document.getElementById('fileDisplayArea').innerHTML=amant;
+		 
+}
+
+/*------- Action 2 : Segmentater le texte----------*/
 
 
 /* Ce que j'avais mis au début mais cela ne prenait pas le texte en compte
@@ -92,7 +115,7 @@ function segment() {
 
 /* Pour la première partie je ne comprenais pas qu'est-ce qu'il fallait faire exactement donc je me suis inspirée des sites et des exemples proposés*/
 
-function segment() {
+function segmentation() {
  queryDelim=document.getElementById('delimID').value; /* va chercher les délimiteurs définis par l'utilisateur */
   if (queryDelim == ''){ /* vérification au cas où l'utilisateur aurait supprimé les délimiteurs */
 	document.getElementById('logger').innerHTML = '';
@@ -152,8 +175,8 @@ function segment() {
 }
 
 
-/*------- Action 2 : Trier les mots les plus fréquents--------*/
-function seg2(){
+/*------- Action 3 : Trier les mots les plus fréquents--------*/
+function dictionnaire(){
     var resultFinal="";
  	var table='';
 	table += '<table align="center" class="aboutme">';
@@ -179,22 +202,6 @@ function seg2(){
 }
 
 
-/*------- Action 3 : Mettre tout le texte en majuscule--------*/
-function maj() {
-	if(document.getElementById('fileDisplayArea').innerHTML==""){
-		alertfichier();
-}
-	else{
-		/*Récupérer la page d'analyse*/
-		document.getElementById('page-analysis').innerHTML ="";
-            /*On récupère le texte*/
-            var text = document.getElementById('fileDisplayArea').innerText;
-
-            /*Mettre en majuscule*/
-            var textMAJ = text.toUpperCase();
-            document.getElementById('page-analysis').innerText = textMAJ;
-	}
-}
 
 		
 			
