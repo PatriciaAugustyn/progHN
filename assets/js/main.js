@@ -202,6 +202,171 @@ function dictionnaire(){
 }
 
 
+/*------- Action 4 : Concordance --------------*/
+
+function concordance(){
+
+	/*alerter l'utilisateur si il n'a pas chargé un texte*/
+	if(document.getElementById('fileDisplayArea').innerHTML==""){
+		alertfichier();		
+}
+	
+	else {	
+	/*Nettoyer la zone*/
+    document.getElementById('page-analysis').innerHTML ="";
+	
+	/*Chercher les 2 id du calcul*/
+    var lepole=document.getElementById('poleID').value;
+    var longueur=document.getElementById('lgID').value;
+    
+   
+      if(lepole !=""){
+
+	/*Prendre tout le texte dans la zone filedisplayArea*/
+	var allLines = document.getElementById('fileDisplayArea').innerText; 
+    
+	/*Construire le Regex pour segmenter en mots*/
+	var queryDelim=document.getElementById('delimID').value;
+	queryDelim += "\n\s\t\"";
+	var queryDelim2 = queryDelim.replace(/(.)/gi, "\\$1");
+	var reg=new RegExp("(["+queryDelim2+"]+)", "g");
+	
+	var compt=0;
+	
+	/* Pour pouvoir alerter l'utilisateur du pôle dans le texte*/
+	var listedepole=[];
+	var listejoint="";
+
+	
+	allLines=allLines.replace(reg,"\377$1\377");
+	var LISTEDEMOTS=allLines.split("\377");
+	
+    /* Mettre le résultat dans un tableau*/
+    var table='';
+    table += '<table align="center" class="aboutme">';
+    table += '<tr><th colspan="4"><b>Concordancier</b></th></tr>';
+    table +='    <th width="20%">Indice</th>';
+    table +='    <th width="30%">Contexte gauche</th>';
+    table +='    <th width="20%">Pôle</th>';
+    table +='    <th width="30%">Contexte droit</th>';
+    table += '</tr>';
+	
+	/*Mettre une regex pour pouvoir rechercher dans le pôle*/
+	var pole=new RegExp("\\b"+lepole+"\\b","i");
+
+	/* Parcourir la liste pour rechercher le mot dans le pôle*/
+	for (var nbmot=0;nbmot<LISTEDEMOTS.length;nbmot++) {	
+        var unmot=LISTEDEMOTS[nbmot];
+                
+        /*Si le pôle est trouvé dans le texte la fonction continue*/
+        if (unmot.search(pole) >-1) {
+            listedepole.push(unmot[nbmot]);
+        	compt++
+        	
+        	/* Si l'utilisateur n'a pas rentré de valeur dans la longueur, sa valeur par défaut est 5*/ 
+        	    if (longueur==""){
+        	        longueur=5;}
+        	        
+			/*Construire contexte gauche et droit*/
+			var longueur2=2*Number(longueur);
+			var CD = LISTEDEMOTS.slice(nbmot+1, nbmot+1+longueur2);
+			var tmp=nbmot-longueur2;
+			var tmp2=tmp+longueur2;
+			if (tmp < 0) {tmp=0;tmp2=nbmot};
+			
+			
+			var CG = LISTEDEMOTS.slice(tmp, tmp2);
+			var contextedroit=CD.join('');
+			var contextegauche = CG.join('');
+			var resutmp = unmot.replace(pole, "<font color='brown'>"+lepole+"</font>");
+		
+			table += "<tr><td>"+compt+"</td><td>"+contextegauche+"</td><td>"+resutmp+"</td><td>"+contextedroit+"</td></tr>";
+		}
+	}
+		
+		/*Si le mot n'existe pas dans le texte, on alerte l'utilisateur*/
+	            if(listedepole == ""){
+					alert("Le texte ne contient aucune occurence avec ce pôle :(");
+					return;
+	}
+	
+		
+	/* Le résultat*/
+    table += '</table>';
+  
+    document.getElementById('page-analysis').innerHTML+=table;
+}
+
+	/*Alerter l'utilisateur pour faire fonctionner la fonction*/
+	  else{
+			alert("Il faut rentrer une valeur dans le pôle ;)");
+			}
+		}
+}
+
+
+/*------- Action 5 : Compter les types de phrases ---------*/
+function compteur() {
+    document.getElementById('page-analysis').innerHTML ="";
+    var phrasesType;
+	
+    /*Choisir le contexte gauche car c'est là que est situé notre texte*/
+    phrasesType = document.getElementById("fileDisplayArea").innerText;
+	
+    /*Délimiter les phrases*/
+    document.getElementById("decl").value = phrasesType.split(".").length-1;
+	document.getElementById("int").value = phrasesType.split("?").length-1;
+	document.getElementById("excl").value = phrasesType.split("!").length-1;
+}
+
+
+/*------- Action 6 : Mettre tout le texte en majuscule--------*/
+function maj() {
+	/*Récupérer la page d'analyse*/
+	document.getElementById('page-analysis').innerHTML ="";
+    /*On récupère le texte*/
+    var text = document.getElementById('fileDisplayArea').innerText;
+
+     /*Mettre en majuscule*/
+    var textMaj = text.toUpperCase();
+    document.getElementById('page-analysis').innerText = textMaj;
+	
+}
+
+
+
+
+/*------- Action 7 : Voir le mot le plus long ---------*/
+function motlong() {
+
+  var toutTexte = document.getElementById("fileDisplayArea").innerText; 
+  var arrayOfLines = toutTexte.split("\n"); 
+  var lgMax="";
+  for (var nblines=0;nblines<arrayOfLines.length;nblines++) {
+
+    var contentxt=arrayOfLines[nblines];
+    var mots=contentxt.split(" "); 
+    for (var i = 0; i < mots.length; i++) {
+      if (mots[i].length > lgMax.length) {lgMax=mots[i]}
+    }
+  }
+
+document.getElementById('page-analysis').innerHTML =lgMax;
+document.getElementById('page-analysis').innerHTML = "<center>Voici le.s mot.s les plus long.s du texte :</center><center><b><font color= '#5b3c11'>" +lgMax;
+}
+
+
+
+/*------- Action 8: En cours... ---------*/
+
+
+
+/*------- Action 9 : Nettoyer les 2 zones ---------*/
+function nettoyage(){
+	document.getElementById('page-analysis').innerHTML ="";
+	document.getElementById('fileDisplayArea').innerHTML ="";
+}
+
 
 		
 			
