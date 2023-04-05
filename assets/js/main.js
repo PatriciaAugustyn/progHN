@@ -192,29 +192,46 @@ function dictionnaire(){
 
 /*------- Action  : Grep--------*/
 function grep() {
-	
-	/*Alerter l'utilisateur si il n'a pas ajouté de pôle*/
+	/*alerter l'utilisateur si il n'a pas chargé un texte*/
 	if(document.getElementById('fileDisplayArea').innerHTML==""){
-		alert("Il faut mettre un pôle pour m'utiliser ;)");
-	}	
-
-
-	let myreg = new RegExp ("(//w+) (//w+)", "g");
-	document.getElementById('page-analysis').innerHTML ="";
+		alert("Chargez un texte pour m'utiliser :)");}
+	
+	else {	
+	/*Nettoyer la zone*/
+    document.getElementById('page-analysis').innerHTML ="";
 	
 	/*Chercher les 2 id du calcul*/
     var lepole=document.getElementById('poleID').value;
     var longueur=document.getElementById('lgID').value;
+    
+   
+    if(lepole !=""){
+
+	/*Prendre tout le texte dans la zone filedisplayArea*/
+	var allLines = document.getElementById('fileDisplayArea').innerText; 
+    
+	/*Construire le Regex pour segmenter en mots*/
+	var queryDelim=document.getElementById('delimID').value;
+	queryDelim += "\n\s\t\"";
+	var queryDelim2 = queryDelim.replace(/(.)/gi, "\\$1");
+	var reg=new RegExp("(["+queryDelim2+"]+)", "g");
 	
-    var texte;
+	var compt=0;
 	
-    /*Choisir le contexte gauche car c'est là que est situé notre texte*/
-    texte = document.getElementById("fileDisplayArea").innerText;
+	/* Pour pouvoir alerter l'utilisateur du pôle dans le texte*/
+	var listedepole=[];
+	var listejoint="";
+
 	
-	let inverse = texte.replaceAll(myreg, "$2 $1");
-	console.log(inverse);
+	allLines=allLines.replace(reg,"\377$1\377");
+	var LISTEDEMOTS=allLines.split("\377");
 	
+    /* Mettre le résultat dans un tableau*/
+    var table='';
 	
+	/*Mettre une regex pour pouvoir rechercher dans le pôle*/
+	var pole=new RegExp("\\b"+lepole+"\\b","i");
+
 	/* Parcourir la liste pour rechercher le mot dans le pôle*/
 	for (var nbmot=0;nbmot<LISTEDEMOTS.length;nbmot++) {	
         var unmot=LISTEDEMOTS[nbmot];
@@ -227,10 +244,42 @@ function grep() {
         	/* Si l'utilisateur n'a pas rentré de valeur dans la longueur, sa valeur par défaut est 5*/ 
         	    if (longueur==""){
         	        longueur=5;}
+					
+					/*Construire contexte gauche et droit*/
+			var longueur2=2*Number(longueur);
+			var CD = LISTEDEMOTS.slice(nbmot+1, nbmot+1+longueur2);
+			var tmp=nbmot-longueur2;
+			var tmp2=tmp+longueur2;
+			if (tmp < 0) {tmp=0;tmp2=nbmot};
+			
+			
+			var CG = LISTEDEMOTS.slice(tmp, tmp2);
+			var contextedroit=CD.join('');
+			var contextegauche = CG.join('');
+			var resutmp = unmot.replace(pole, "<font color='red'>"+lepole+"</font>"); /*La couleur est rouge --> Mais plus tard changer en marron*/
+		
+			table += "<tr><td>"+compt+"</td><td>"+contextegauche+"</td><td>"+resutmp+"</td><td>"+contextedroit+"</td></tr>";
 		}
 	}
+	   /*Si le mot n'existe pas dans le texte, on alerte l'utilisateur*/
+	            if(listedepole == ""){
+					alert("Le texte ne contient aucune occurence avec ce pôle :(");
+					return;
+				}
 	
-	
+		
+	/* Le résultat*/
+    table += '</table>';
+  
+    document.getElementById('page-analysis').innerHTML+=table;
+}
+
+	/*Alerter l'utilisateur pour faire fonctionner la fonction*/
+	  else{
+			alert("Il faut rentrer une valeur dans le pôle ;)");
+			}
+		}
+
 }
 
 
