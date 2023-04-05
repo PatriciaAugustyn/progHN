@@ -39,6 +39,7 @@
 		
 			<ul class="menu">
 				<li><a href="index.html">Page principale</a></li>
+				<li><a href="cv.html">Mon CV</a></li>
 				<li><a href="lecture.html">Mes lectures</a></li>
 				<li><a href="devoir-string.html">Devoir 1</a></li>
 				<li><a href="devoirarray.html">Devoir 2</a></li>
@@ -50,27 +51,21 @@
 		<strong><em><u>Merci beaucoup d'avoir visité mon site !</u></em></strong>
 		</p>
 		<p>
-		Si vous avez des questions, des idées de boutons, des commentaires que vous voulez que me partager, n'hésitez pas à remplir le formulaire ci-dessous.<br> 
+		Si vous avez des questions, des idées à me proposer ou des commentaires que vous voulez me partager, n'hésitez pas à remplir le formulaire ci-dessous.<br> 
 		Je regarde régulièrement vos commentaires, qu'ils soient <strong>bons</strong> ou <strong>mauvais</strong>, et ils me permettent de m'améliorer au quotidien.<br>
 		</p>
 		
-			<!--Ceci est un bouton pour remonter en haut de la page-->
-		<a href="#" class="top"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
-		
-		
-			<!--Formulaire pour envoyer un commentaire/mail...-->
-		<div class="page">
-			<form action="action_page.php">
-			
-				<label for="fname">Prénom</label>
-				<input type="text" id="fname" name="firstname" placeholder="Your name...">
+		<!--Formulaire pour envoyer un commentaire/mail...-->
+		<div class="page"> 
+			<form action="https://formsubmit.co/patricia.augustyn@sorbonne-nouvelle.fr" method="POST" />
 				
-				<label for="lname">Nom</label>
-				<input type="text" id="lname" name="lastname" placeholder="Your last name ..."><br>
+				<label for="fname">NOM Prénom</label>
+				<input type="text" name="Name" placeholder="Full Name" required>
 				
-				<br><label for="country">Pays</label>
-					<select id="country" name="country">
-						<option value="albenia">Albenia</option>
+				<label for="email">Email</label>
+				<input type="email" name="Email" placeholder="Email" required>
+				<select name="pays">
+					<option value="albenia">Albenia</option>
 						<option value="algeria">Algeria</option>
 						<option value="australia">Australia</option>
 						<option value="belgium">Belgium</option>
@@ -102,25 +97,19 @@
 						<option value="USA">United States of America</option>
 						<option value="uruguay">Uruguay</option>
 						<option value="other">Other...</option>
-					</select>
-					
-					<label for="subject">Commentaire</label>
-						<textarea id="subject" name="subject" placeholder="Write something..." style="height:200px">
-						</textarea>
-						
-					<div class="neon">
-						<a href="">Envoyer</a>
-					</div> 
+				</select>
+				<textarea name="Message" placeholder="Write something..." style="height:150px"  required></textarea>
+				<button class="bouton" type="submit">Envoyer</button>
 			</form>
-			
 		</div>
-
+		
+		
 			
-			<footer>
-				<a href="http://www.univ-paris3.fr/">Lien vers le site de Sorbonne Nouvelle</a>
-				<p></p>
-				<a href="syllabus.html">Lien vers le syllabus</a>
-			</footer>
+		<footer>
+			<a href="http://www.univ-paris3.fr/">Lien vers le site de Sorbonne Nouvelle</a>
+			<p></p>
+			<a href="syllabus.html">Lien vers le syllabus</a>
+		</footer>
 		
 		</div>	
     </body>

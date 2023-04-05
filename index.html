@@ -120,14 +120,15 @@
 											<td>Si vous n'avez pas de texte, ce bouton vous permet d'en <b>charger un</b> : <i><u>La Mort des amants</u></i> de Charles Baudelaire</td>
 										</tr>
 										
-										<tr>
-											<td><button class="button">Segmentation</button></td>
-											<td>Cliquez sur ce bouton pour <b>segmenter</b> le texte. Vous trouverez le nombre de mots que votre texte contient avec et sans les doublons.</td>
-										</tr>
 										
 										<tr>
 											<td><button class="button">Dictionnaire</button></td>
 											<td>Avec ce bouton, vous obtiendrez un tableau avec les mots les plus <b>fréquents</b> du texte triés dans l'ordre <b>décroissant</b>.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Grep</button></td>
+											<td>En cours....</td>
 										</tr>
 										
 										<tr>
@@ -146,17 +147,17 @@
 											<td>Cliquez sur ce bouton si vous souhaitez changez le texte en <b>majuscule</b>.</td>
 										</tr>
 										
+										<tr>
+											<td><button class="button">Minuscule</button></td>
+											<td>Cliquez sur ce bouton si vous souhaitez changez le texte en <b>minuscule</b>.</td>
+										</tr>
+										
 										
 										<tr>
 											<td><button class="button">Mot long</button></td>
 											<td>Si vous souhaitez découvrir le mot <b>le plus long</b> de votre texte, ce bouton sera <b>parfait pour répondre à votre demande !</b></td>
 										</tr>
 										
-										
-										<tr>
-											<td><button class="button">Action 8</button></td>
-											<td>Projet en cours...</td>
-										</tr>
 										
 										<tr>
 											<td><button class="button">Nettoyage</button></td>
@@ -171,13 +172,14 @@
 						</div>
 									
 						<button class="button" onclick="baudelaire()"><span>C. Baudelaire</span></button>
-						<button class="button" onclick="segmentation()"><span>Segmentation</span></button>
+						<!--<button class="button" onclick="segmentation()"><span>Segmentation</span></button> Enlever car segmentation automatique -->
 						<button class="button" onclick="dictionnaire()"><span>Dictionnaire</span></button>
+						<button class="button" onclick="grep()"><span>Grep</span></button>
 						<button class="button" onclick="concordance()"><span>Concordance</span></button>
 						<button class="button" onclick="compteur()"><span>Compteur</span></button>
 						<button class="button" onclick="maj()"><span>Majuscule</span></button>
+						<button class="button" onclick="min()"><span>Minuscule</span></button>
 						<button class="button" onclick="motlong()"><span>Mot long</span></button>
-						<button class="button" onclick=""><span>action 8</span></button>
 						<button class="button" onclick="nettoyage()"><span>Nettoyage</span></button>
 					
 					</p>
@@ -197,7 +199,7 @@
 				
 				
 				<div id="compteur">
-					<img id="gif" src="assets/img/mrbean.gif" align="right"  width="37%"/>
+					<img id="gif" src="assets/img/mrbean.gif" align="right"  width="36.4%"/>
 					</br></br>
 					<p>Nombre de phrases déclaratives :</p> <input type="text" name="pole" id="decl"  size="20"/>
 					<p>Nombre de phrases interrogatives :</p> <input type="text" name="pole" id="int"  size="20"/>

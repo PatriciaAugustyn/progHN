@@ -78,7 +78,7 @@ body {
 	transform-origin: center;
 	transform-style: preserve-3d;
 	transform: rotateY(calc(var(--i)*45deg)) translateZ(200px);
-	-webkit-box-reflect: below 0px linear-gradient(transparent, transparent, #0004);
+	-webkit-box-reflect: /*below*/ 0px linear-gradient(transparent, transparent, #0004);
 }
 .rond span img {
 	width: 150px;
@@ -339,23 +339,22 @@ option {
 
 
 /*Bouton néon pour le submit*/
-	
-.neon {
+.bouton {
 	text-align: center;
 	box-sizing: border-box;
 	padding: 10px;
-}
-.neon a{
-	margin-left: 50px;
 	color: black;
 	font-size: 24px;
-	text-decoration: none;
+	border: none;
 	text-transform: uppercase;
 	background: #FFFF62;
-	transition: 0.5s;
+	font-family : Fuzzy Bubbles;
 	letter-spacing: 4px;
+	cursor: pointer;
+	width: 150px;
+	border-radius: 20px;
 }
-.neon a:hover {
+.bouton:hover {
 	background: #FFFF33;
 	color: black;
 	box-shadow: 0 0 5px #FFFF33,

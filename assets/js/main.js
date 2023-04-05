@@ -35,7 +35,7 @@
 		
 	
 /*-------- Prendre un texte et l'afficher : "download"-------*/	
-		window.onload = function() {
+window.onload = function() {
     let fileInput = document.getElementById('fileInput');
     let fileDisplayArea = document.getElementById('fileDisplayArea');
 
@@ -58,63 +58,21 @@
             // dans la zone d'affichage du texte.
             reader.onload = function(e) {
                 fileDisplayArea.innerText = reader.result;
+				segmentation();
+				document.getElementById("logger").innerHTML = '<span class="infolog">Fichier chargé avec succès, ' + text_tokens.length + ' tokens dans le texte.</span>';
             }
 
             // on lit concrètement le fichier.
             // Cette lecture lancera automatiquement la fonction "onload" juste au-dessus.
-            reader.readAsText(file);    
-
-            document.getElementById("logger").innerHTML = alert("Fichier chargé avec succès");
+            reader.readAsText(file);
         } else { // pas un fichier texte : message d'erreur.
             fileDisplayArea.innerText = "";
-            document.getElementById("logger").innerHTML = alert("Type de fichier non supporté");
+            document.getElementById("logger").innerHTML = '<span class="errorlog">Type de fichier non supporté !</span>';
         }
     });
 }
 
-/*------- Action 1 : Afficher un texte ----------*/
-function baudelaire() { 
-          var amant = 'La mort des amants<br><br/>';
-		  amant+="Nous aurons des lits pleins d'odeurs légères,<br/>";//Le "+" permet de concaténer les différentes phrases du texte
-          amant+="Des divans profonds comme des tombeaux,<br/>";
-		  amant+="Et d'étranges fleurs sur des étagères,<br/>";
-		  amant+="Ecloses pour nous sous des cieux plus beaux.<br><br/>";
-		  amant+="Usant à l'envie leurs chaleurs dernières,<br/>";
-		  amant+="Nos deux coeurs seront deux vastes flambeaux,<br/>";
-		  amant+="Qui réfléchiront leurs doubles lumières<br/>";
-          amant+="Dans nos deux esprits, ces miroirs jumeaux.<br><br/>";
-          amant+="Un soir fait de rose et de bleu mystique,<br/>";
-          amant+="Nous échangerons un éclair unique,<br/>";
-          amant+="Comme un long sanglot, tout chargé d'adieux;<br><br/>";
-          amant+="Et plus tard un Ange, entr'ouvrant les portes,<br/>";
-          amant+="Viendra ranimer, fidèle et joyeux,<br/>";
-          amant+="Les miroirs ternis et les flammes mortes.<br><br/>";
-		  amant+="Charles Baudelaire<br/>";
-
-         /*On affiche le texte dans la zone "fileDisplayArea"*/
-		  document.getElementById('fileDisplayArea').innerHTML=amant;
-		 
-}
-
-/*------- Action 2 : Segmentater le texte----------*/
-
-
-/* Ce que j'avais mis au début mais cela ne prenait pas le texte en compte
-function segment() {
-	let texte = document.getElementById("fileDisplayArea").value;
-	let TexteF = texte.split(" ");
-	let tabl = [];
-	TexteF.forEach ((mot) => {
-    let element = document.createElement("p");
-    let texteM = document.createTextNode(mot);
-    element.appendChild(texteM);
-    tabl.push(element);
-  });
-	document.getElementById("page-analysis").append(...tabl);
-} */
-
-/* Pour la première partie je ne comprenais pas qu'est-ce qu'il fallait faire exactement donc je me suis inspirée des sites et des exemples proposés*/
-
+/*------- Action  : Segmentation automatique ----------*/
 function segmentation() {
  queryDelim=document.getElementById('delimID').value; /* va chercher les délimiteurs définis par l'utilisateur */
   if (queryDelim == ''){ /* vérification au cas où l'utilisateur aurait supprimé les délimiteurs */
@@ -169,14 +127,45 @@ function segmentation() {
 		}
 	}
   }
-  var vide='<h3><span style="text-align:center; border: none ; padding: 0px; color: #5b3c11"><h2>Résultat de segmentation :</h2></span><table style="width:100%"><tr><th>Mots occurrences: </th><th>Mots différents: </th></tr><tr><td>'+NBMOTTOTALSource+'</td><td>'+NBMOTSource+'</td></tr></table></h3>';
+  var vide='<h3><span style="text-align:center; border: none ; padding: 0px; color: #5b3c11"><h2>Résultat de segmentation :</h2></span><table style="width:100%"><tr><th>Nombre de tokens: </th><th>Nombre de tokens différents: </th></tr><tr><td>'+NBMOTTOTALSource+'</td><td>'+NBMOTSource+'</td></tr></table></h3>';
   document.getElementById('page-analysis').innerHTML = vide;
   document.getElementById('logger').innerHTML = "";
 }
 
 
-/*------- Action 3 : Trier les mots les plus fréquents--------*/
+/*------- Action  : Afficher un texte ----------*/
+function baudelaire() { 
+          var amant = 'La mort des amants<br><br/>';
+		  amant+="Nous aurons des lits pleins d'odeurs légères,<br/>";//Le "+" permet de concaténer les différentes phrases du texte
+          amant+="Des divans profonds comme des tombeaux,<br/>";
+		  amant+="Et d'étranges fleurs sur des étagères,<br/>";
+		  amant+="Ecloses pour nous sous des cieux plus beaux.<br><br/>";
+		  amant+="Usant à l'envie leurs chaleurs dernières,<br/>";
+		  amant+="Nos deux coeurs seront deux vastes flambeaux,<br/>";
+		  amant+="Qui réfléchiront leurs doubles lumières<br/>";
+          amant+="Dans nos deux esprits, ces miroirs jumeaux.<br><br/>";
+          amant+="Un soir fait de rose et de bleu mystique,<br/>";
+          amant+="Nous échangerons un éclair unique,<br/>";
+          amant+="Comme un long sanglot, tout chargé d'adieux;<br><br/>";
+          amant+="Et plus tard un Ange, entr'ouvrant les portes,<br/>";
+          amant+="Viendra ranimer, fidèle et joyeux,<br/>";
+          amant+="Les miroirs ternis et les flammes mortes.<br><br/>";
+		  amant+="Charles Baudelaire<br/>";
+
+         /*On affiche le texte dans la zone "fileDisplayArea"*/
+		  document.getElementById('fileDisplayArea').innerHTML=amant;
+		  segmentation();
+		 
+}
+
+
+/*------- Action  : Trier les mots les plus fréquents--------*/
 function dictionnaire(){
+	
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+	
     var resultFinal="";
  	var table='';
 	table += '<table align="center" class="aboutme">';
@@ -201,14 +190,58 @@ function dictionnaire(){
   document.getElementById('page-analysis').innerHTML = resultFinal;
 }
 
+/*------- Action  : Grep--------*/
+function grep() {
+	
+	/*Alerter l'utilisateur si il n'a pas ajouté de pôle*/
+	if(document.getElementById('fileDisplayArea').innerHTML==""){
+		alert("Il faut mettre un pôle pour m'utiliser ;)");
+	}	
 
-/*------- Action 4 : Concordance --------------*/
+
+	let myreg = new RegExp ("(//w+) (//w+)", "g");
+	document.getElementById('page-analysis').innerHTML ="";
+	
+	/*Chercher les 2 id du calcul*/
+    var lepole=document.getElementById('poleID').value;
+    var longueur=document.getElementById('lgID').value;
+	
+    var texte;
+	
+    /*Choisir le contexte gauche car c'est là que est situé notre texte*/
+    texte = document.getElementById("fileDisplayArea").innerText;
+	
+	let inverse = texte.replaceAll(myreg, "$2 $1");
+	console.log(inverse);
+	
+	
+	/* Parcourir la liste pour rechercher le mot dans le pôle*/
+	for (var nbmot=0;nbmot<LISTEDEMOTS.length;nbmot++) {	
+        var unmot=LISTEDEMOTS[nbmot];
+                
+        /*Si le pôle est trouvé dans le texte la fonction continue*/
+        if (unmot.search(pole) >-1) {
+            listedepole.push(unmot[nbmot]);
+        	compt++
+        	
+        	/* Si l'utilisateur n'a pas rentré de valeur dans la longueur, sa valeur par défaut est 5*/ 
+        	    if (longueur==""){
+        	        longueur=5;}
+		}
+	}
+	
+	
+}
+
+
+
+/*------- Action  : Concordance --------------*/
 
 function concordance(){
 
 	/*alerter l'utilisateur si il n'a pas chargé un texte*/
 	if(document.getElementById('fileDisplayArea').innerHTML==""){
-		alertfichier();		
+		alert("Chargez un texte pour m'utiliser :)");		
 }
 	
 	else {	
@@ -288,7 +321,7 @@ function concordance(){
 	            if(listedepole == ""){
 					alert("Le texte ne contient aucune occurence avec ce pôle :(");
 					return;
-	}
+				}
 	
 		
 	/* Le résultat*/
@@ -305,7 +338,7 @@ function concordance(){
 }
 
 
-/*------- Action 5 : Compter les types de phrases ---------*/
+/*------- Action  : Compter les types de phrases ---------*/
 function compteur() {
     document.getElementById('page-analysis').innerHTML ="";
     var phrasesType;
@@ -320,7 +353,7 @@ function compteur() {
 }
 
 
-/*------- Action 6 : Mettre tout le texte en majuscule--------*/
+/*------- Action  : Mettre tout le texte en majuscule--------*/
 function maj() {
 	/*Récupérer la page d'analyse*/
 	document.getElementById('page-analysis').innerHTML ="";
@@ -333,10 +366,23 @@ function maj() {
 	
 }
 
+/*------- Action  : Mettre tout le texte en minuscule--------*/
+function min() {
+	/*Récupérer la page d'analyse*/
+	document.getElementById('page-analysis').innerHTML ="";
+    /*On récupère le texte*/
+    var text = document.getElementById('fileDisplayArea').innerText;
+
+     /*Mettre en majuscule*/
+    var textMaj = text.toLowerCase();
+    document.getElementById('page-analysis').innerText = textMaj;
+	
+}
 
 
 
-/*------- Action 7 : Voir le mot le plus long ---------*/
+
+/*------- Action  : Voir le mot le plus long ---------*/
 function motlong() {
 
   var toutTexte = document.getElementById("fileDisplayArea").innerText; 
@@ -356,12 +402,7 @@ document.getElementById('page-analysis').innerHTML = "<center>Voici le.s mot.s l
 }
 
 
-
-/*------- Action 8: En cours... ---------*/
-
-
-
-/*------- Action 9 : Nettoyer les 2 zones ---------*/
+/*------- Action  : Nettoyer les 2 zones ---------*/
 function nettoyage(){
 	document.getElementById('page-analysis').innerHTML ="";
 	document.getElementById('fileDisplayArea').innerHTML ="";
