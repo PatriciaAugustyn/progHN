@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" charset= "UTF-8">
         <title>Page de présentation</title>
 		<link rel="stylesheet" href="assets/css/style.css">
+		
 		<link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=GFS+Didot&family=Indie+Flower&family=Playfair+Display&display=swap" rel="stylesheet">
 		
 		<script src="assets/js/main.js"></script>
@@ -128,7 +129,7 @@
 										
 										<tr>
 											<td><button class="button">Grep</button></td>
-											<td>En cours....</td>
+											<td>Ce bouton permet de <b>rechercher</b> un mot dans un texte.</td>
 										</tr>
 										
 										<tr>
@@ -155,13 +156,28 @@
 										
 										<tr>
 											<td><button class="button">Mot long</button></td>
-											<td>Si vous souhaitez découvrir le mot <b>le plus long</b> de votre texte, ce bouton sera <b>parfait pour répondre à votre demande !</b></td>
+											<td>Si vous souhaitez découvrir le.s mot.s <b>le.s plus long.s</b> de votre texte, ce bouton sera <b>parfait pour répondre à votre demande !</b></td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Mot court</button></td>
+											<td>Si vous souhaitez découvrir le.s mot.s <b>le.s plus court.s</b> de votre texte.</b></td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Hapax</button></td>
+											<td>Ce bouton vous permet d'<b>afficher</b> les mots qui n'apparaissent qu'<b>une seule fois</b> dans le texte.</td>
 										</tr>
 										
 										
 										<tr>
 											<td><button class="button">Nettoyage</button></td>
 											<td>Ce bouton permet de <b>nettoyer</b> la zone de <b>texte</b> et la zone d'<b>analyse</b>.</td>
+										</tr>
+										
+										<tr>
+											<td><button class="button">Téléchargement</button></td>
+											<td>Ce bouton permet de <b>télécharger</b> le résultat de votre <b>analyse</b> en format .txt, mais aussi le <b>nommer</b> à votre guise ;).</td>
 										</tr>
 																				
 									</tbody>
@@ -180,11 +196,14 @@
 						<button class="button" onclick="maj()"><span>Majuscule</span></button>
 						<button class="button" onclick="min()"><span>Minuscule</span></button>
 						<button class="button" onclick="motlong()"><span>Mot long</span></button>
+						<button class="button" onclick="motcourt()"><span>Mot court</span></button>
+						<button class="button" onclick="hapax()"><span>Hapax</span></button>
 						<button class="button" onclick="nettoyage()"><span>Nettoyage</span></button>
+						
 					
 					</p>
 					
-					
+					<button class="button" onclick="telechargement()"><span>Téléchargement</span></button>
 					
 				</div>
 				

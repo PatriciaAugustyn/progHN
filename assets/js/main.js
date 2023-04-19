@@ -196,90 +196,40 @@ function grep() {
 	if(document.getElementById('fileDisplayArea').innerHTML==""){
 		alert("Chargez un texte pour m'utiliser :)");}
 	
-	else {	
-	/*Nettoyer la zone*/
-    document.getElementById('page-analysis').innerHTML ="";
-	
-	/*Chercher les 2 id du calcul*/
-    var lepole=document.getElementById('poleID').value;
-    var longueur=document.getElementById('lgID').value;
-    
-   
-    if(lepole !=""){
-
-	/*Prendre tout le texte dans la zone filedisplayArea*/
-	var allLines = document.getElementById('fileDisplayArea').innerText; 
-    
-	/*Construire le Regex pour segmenter en mots*/
-	var queryDelim=document.getElementById('delimID').value;
-	queryDelim += "\n\s\t\"";
-	var queryDelim2 = queryDelim.replace(/(.)/gi, "\\$1");
-	var reg=new RegExp("(["+queryDelim2+"]+)", "g");
-	
-	var compt=0;
-	
-	/* Pour pouvoir alerter l'utilisateur du pôle dans le texte*/
-	var listedepole=[];
-	var listejoint="";
-
-	
-	allLines=allLines.replace(reg,"\377$1\377");
-	var LISTEDEMOTS=allLines.split("\377");
-	
-    /* Mettre le résultat dans un tableau*/
-    var table='';
-	
-	/*Mettre une regex pour pouvoir rechercher dans le pôle*/
-	var pole=new RegExp("\\b"+lepole+"\\b","i");
-
-	/* Parcourir la liste pour rechercher le mot dans le pôle*/
-	for (var nbmot=0;nbmot<LISTEDEMOTS.length;nbmot++) {	
-        var unmot=LISTEDEMOTS[nbmot];
-                
-        /*Si le pôle est trouvé dans le texte la fonction continue*/
-        if (unmot.search(pole) >-1) {
-            listedepole.push(unmot[nbmot]);
-        	compt++
-        	
-        	/* Si l'utilisateur n'a pas rentré de valeur dans la longueur, sa valeur par défaut est 5*/ 
-        	    if (longueur==""){
-        	        longueur=5;}
-					
-					/*Construire contexte gauche et droit*/
-			var longueur2=2*Number(longueur);
-			var CD = LISTEDEMOTS.slice(nbmot+1, nbmot+1+longueur2);
-			var tmp=nbmot-longueur2;
-			var tmp2=tmp+longueur2;
-			if (tmp < 0) {tmp=0;tmp2=nbmot};
+	/* Il faut lire tout le texte chargé*/
+	document.getElementById("page-analysis").innerText="";
+	var pole=document.getElementById("poleID").value;
+	console.log("POLE saisi : "+pole)
+	if (pole != "") {
+		var resultat='<table class="aboutme">';
+		// 1 Récupérer le texte :
+		var texte=document.getElementById("fileDisplayArea").innerText;
+		var Listedeslignes=texte.split("\n");
+		var cptcontexte=0;
+		for (var nblines=0;nblines<Listedeslignes.length;nblines++) {
+			var ligne=Listedeslignes[nblines];
+			var reg=new RegExp("\\b"+pole+"\\b", "g");
+			if (ligne.search(reg) > -1 ) {
+				cptcontexte=cptcontexte+1;
+				/*Modifier dans ligne d'affichage du pole pour le mettre en marron */
+				ligne = ligne.replace(reg, "<font color='brown'>"+pole+"</font>");
+				resultat+="<tr><td>"+cptcontexte+"</td><td>"+ligne+"</td></tr>";
+			}
 			
-			
-			var CG = LISTEDEMOTS.slice(tmp, tmp2);
-			var contextedroit=CD.join('');
-			var contextegauche = CG.join('');
-			var resutmp = unmot.replace(pole, "<font color='red'>"+lepole+"</font>"); /*La couleur est rouge --> Mais plus tard changer en marron*/
-		
-			table += "<tr><td>"+compt+"</td><td>"+contextegauche+"</td><td>"+resutmp+"</td><td>"+contextedroit+"</td></tr>";
 		}
-	}
-	   /*Si le mot n'existe pas dans le texte, on alerte l'utilisateur*/
-	            if(listedepole == ""){
+		/*Si le mot n'existe pas dans le texte, on alerte l'utilisateur*/
+	            if( cptcontexte == ""){
 					alert("Le texte ne contient aucune occurence avec ce pôle :(");
 					return;
 				}
+				
+		resultat+="</table>";
+		document.getElementById("page-analysis").innerHTML+=resultat; /* Afficher dans page-analysis le résultat dans un tableau avec une ligne par ligne */
+	}
 	
-		
-	/* Le résultat*/
-    table += '</table>';
-  
-    document.getElementById('page-analysis').innerHTML+=table;
-}
-
-	/*Alerter l'utilisateur pour faire fonctionner la fonction*/
-	  else{
-			alert("Il faut rentrer une valeur dans le pôle ;)");
-			}
-		}
-
+	else {
+		alert("Il faut rentrer une valeur dans le pôle ;)");
+	}	
 }
 
 
@@ -389,6 +339,10 @@ function concordance(){
 
 /*------- Action  : Compter les types de phrases ---------*/
 function compteur() {
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+	
     document.getElementById('page-analysis').innerHTML ="";
     var phrasesType;
 	
@@ -404,6 +358,10 @@ function compteur() {
 
 /*------- Action  : Mettre tout le texte en majuscule--------*/
 function maj() {
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+	
 	/*Récupérer la page d'analyse*/
 	document.getElementById('page-analysis').innerHTML ="";
     /*On récupère le texte*/
@@ -417,6 +375,10 @@ function maj() {
 
 /*------- Action  : Mettre tout le texte en minuscule--------*/
 function min() {
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+	
 	/*Récupérer la page d'analyse*/
 	document.getElementById('page-analysis').innerHTML ="";
     /*On récupère le texte*/
@@ -431,9 +393,12 @@ function min() {
 
 
 
-/*------- Action  : Voir le mot le plus long ---------*/
+/*------- Action  : Voir le.s mot.s le.s plus long.s ---------*/
 function motlong() {
-
+   /*Alerter l'utilisateur si il n'a pas chargé un texte*/
+  if (document.getElementById('fileDisplayArea').innerHTML==""){
+  alert("Chargez un texte pour m'utiliser :)");}
+	
   var toutTexte = document.getElementById("fileDisplayArea").innerText; 
   var arrayOfLines = toutTexte.split("\n"); 
   var lgMax="";
@@ -447,7 +412,122 @@ function motlong() {
   }
 
 document.getElementById('page-analysis').innerHTML =lgMax;
-document.getElementById('page-analysis').innerHTML = "<center>Voici le.s mot.s les plus long.s du texte :</center><center><b><font color= '#5b3c11'>" +lgMax;
+document.getElementById('page-analysis').innerHTML = "<center>Voici le.s mot.s le.s plus long.s du texte :</center><center><font color= '#5b3c11'>" +lgMax;
+}
+
+/* ------- Action  : Voir le.s mot.s le.s plus court.s ---------*/
+function motcourt() {
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+	
+	var toutTexte = document.getElementById("fileDisplayArea").innerText; 
+	var arrayOfLines = toutTexte.split("\n"); 
+	var lgmin=[];
+	var longueurMinimum=1000;
+	
+	/* Utiliser la segmentation en mots */
+	var queryDelim=document.getElementById('delimID').value;
+	queryDelim += "\n\s\t\"";
+	var queryDelim2 = queryDelim.replace(/(.)/gi, "\\$1");
+	var reg=new RegExp("["+queryDelim2+"]", "g");
+
+	/* Chercher la longueur minimum */
+	for (var nblines=0;nblines<arrayOfLines.length;nblines++) {
+		var contentxt=arrayOfLines[nblines];
+		var mots=contentxt.split(reg);
+		console.log(mots);
+		for (var i = 0; i < mots.length; i++) {
+			if ((mots[i].length < longueurMinimum) && (mots[i].length > 1)) {
+				longueurMinimum=mots[i].length;
+			}
+		}
+	}
+	/* Voir si le mot a la longueur minimum --> on le met dans la liste */
+	for (var nblines=0;nblines<arrayOfLines.length;nblines++) {
+		var contentxt=arrayOfLines[nblines];
+		var mots=contentxt.split(reg);
+		console.log(mots);
+		for (var i = 0; i < mots.length; i++) {
+	
+			if (mots[i].length == longueurMinimum && (!(lgmin.includes(mots[i].toLowerCase())))) { // test d'inclusion sur le nouveau mot transcodé en minuscule
+                    lgmin.push(mots[i].toLowerCase()); /* Mettre en minuscule dans lgmin */
+           }
+		}
+	}
+
+	document.getElementById('page-analysis').innerHTML = "<center>Voici le.s mot.s le.s plus court.s du texte :</center><p>";
+
+	for (var i = 0; i < lgmin.length; i++) {
+		document.getElementById('page-analysis').innerHTML +="<font color= '#5b3c11'>" +lgmin[i]+"<br/>";
+	}
+	document.getElementById('page-analysis').innerHTML += "</b></p>";
+}
+
+
+/*------- Action  : les hapax ---------*/
+function hapax() {
+	
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+	
+	
+    var doc = document.getElementById("fileDisplayArea").innerText; /*on recupere le texte*/
+    doc = doc.toLowerCase(); /* Mettre en minuscule pour que les mots aient la même forme */
+ 
+    var mots = doc.split(/[\n\s,.;:-_!«»*"'?§%$~|&#@=`()]+/);
+    //on le segmente en mots
+    var mots = mots.sort();
+    
+    for (i = mots.length; i > 0; i--) { /*Trier par ordre alphabetique */
+        if (mots[i] == mots[i - 1]) {
+            mots[i] = ""
+        }
+    }
+    
+    for (i = 0; i < mots.length; i++) { /* Effacer les mots identiques */
+        if (mots[i + 1] == "") {
+            mots[i] = ""
+        }
+    }
+    var mots = mots.filter(Boolean);
+    
+    var nbHapax = mots.length; /*Effacer les items vides*/
+    var resultat = "<table class='aboutme'><tr><th><b>Nombre d\'Hapax dans le texte : " + nbHapax + " </b></th></tr>";  
+ 
+    for (i = 0; i < mots.length; i++) {   /* Créer la variable resultat qui sera dans un tableau */
+        var resultat = "<tr><td>" + resultat + "</td><td>" + mots[i] + "</td></tr>";
+    }
+    
+    var resultat = resultat + "</table>"; /*Ajouter les résultats/hapax dans le tableau*/
+
+    document.getElementById('page-analysis').innerHTML = resultat;
+
+}
+
+
+/*------- Action  : Télécharger à chaque fois les résultats obtenus dans le page-analysis ---------*/
+
+/*La fonction download() vient de https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server [consulté le 06/04/2023]*/
+function download(filename, text) {
+	var element = document.createElement('a');
+	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+	element.setAttribute('download', filename);
+
+	element.style.display = 'none';
+	document.body.appendChild(element);
+
+	element.click();
+
+	document.body.removeChild(element);
+}
+
+/*-----L'utilisateur peut nommer le fichier avant le téléchargemet---*/
+function telechargement() {
+	var filename = prompt("Entrez le nom du fichier à télécharger.", "analyse.txt"); /*Ce nom pourra être mondifié par l'utilisateur*/
+	var text = document.getElementById("page-analysis").innerText;
+	download(filename, text);
 }
 
 
