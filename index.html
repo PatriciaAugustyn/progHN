@@ -169,6 +169,11 @@
 											<td>Ce bouton vous permet d'<b>afficher</b> les mots qui n'apparaissent qu'<b>une seule fois</b> dans le texte.</td>
 										</tr>
 										
+										<tr>
+											<td><button class="button">Silence</button></td>
+											<td>Ce bouton vous permet d'<b>afficher</b> votre texte de façon <b>silencieuse</b> !</td>
+										</tr>
+										
 										
 										<tr>
 											<td><button class="button">Nettoyage</button></td>
@@ -198,11 +203,11 @@
 						<button class="button" onclick="motlong()"><span>Mot long</span></button>
 						<button class="button" onclick="motcourt()"><span>Mot court</span></button>
 						<button class="button" onclick="hapax()"><span>Hapax</span></button>
-						<button class="button" onclick="nettoyage()"><span>Nettoyage</span></button>
+						<button class="button" onclick="silence()"><span>Silence</span></button>
 						
 					
 					</p>
-					
+					<button class="button" onclick="nettoyage()"><span>Nettoyage</span></button>
 					<button class="button" onclick="telechargement()"><span>Téléchargement</span></button>
 					
 				</div>
@@ -218,7 +223,7 @@
 				
 				
 				<div id="compteur">
-					<img id="gif" src="assets/img/mrbean.gif" align="right"  width="36.4%"/>
+					<img id="gif" src="assets/img/mrbean.gif" align="right"  width="35%"/>
 					</br></br>
 					<p>Nombre de phrases déclaratives :</p> <input type="text" name="pole" id="decl"  size="20"/>
 					<p>Nombre de phrases interrogatives :</p> <input type="text" name="pole" id="int"  size="20"/>
@@ -228,7 +233,6 @@
 				
 			</div>
 		
-			
 			<footer>
 				<a href="http://www.univ-paris3.fr/">Lien vers le site de Sorbonne Nouvelle</a>
 				<p></p>

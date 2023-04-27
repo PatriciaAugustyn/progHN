@@ -473,7 +473,7 @@ function hapax() {
 	alert("Chargez un texte pour m'utiliser :)");}
 	
 	
-    var doc = document.getElementById("fileDisplayArea").innerText; /*on recupere le texte*/
+    var doc = document.getElementById("fileDisplayArea").innerText; /*On recupere le texte*/
     doc = doc.toLowerCase(); /* Mettre en minuscule pour que les mots aient la même forme */
  
     var mots = doc.split(/[\n\s,.;:-_!«»*"'?§%$~|&#@=`()]+/);
@@ -503,8 +503,30 @@ function hapax() {
     var resultat = resultat + "</table>"; /*Ajouter les résultats/hapax dans le tableau*/
 
     document.getElementById('page-analysis').innerHTML = resultat;
-
 }
+
+function silence() {
+	/*Alerter l'utilisateur si il n'a pas chargé un texte*/
+	if (document.getElementById('fileDisplayArea').innerHTML==""){
+	alert("Chargez un texte pour m'utiliser :)");}
+
+	document.getElementById("page-analysis").innerText=""; /*On recupere le texte et le contenu*/
+	var texte = document.getElementById("fileDisplayArea").innerText;
+	
+	var car = texte.split(""); /*Mettre en caractere*/
+	
+	var regex = /[laé]/gi; /*Remplacer ces caractère/regex par notre message chifré ci dessous */
+	
+	for (var i = 0; i < car.length; i++) {
+		if (car[i].match(regex)) {
+			texte = texte.replace(car[i], "Chuut Psssst"); /*Pour chaque "l" "a" ou "é" dans le texte, on remplacera par "Chuut Psssst" */
+		}
+	}
+	
+	var gif = "<img src='assets/img/film.gif' height=160px><br/>"+ texte + ""; 
+	document.getElementById("page-analysis").innerHTML = gif; /* Afficher un gif et notre résultat du message chiffré */
+}
+
 
 
 /*------- Action  : Télécharger à chaque fois les résultats obtenus dans le page-analysis ---------*/
